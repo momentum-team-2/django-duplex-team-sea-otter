@@ -1,9 +1,17 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from .models import Habit
 from .forms import HabitForm
 
 # Create your views here.
+def home(request):
+    if request.user.is_authenticated:
+        return redirect('list_habits')
+    
+    return render(request, 'habits/home.html')
+
+
 def list_habits(request):
     habits = Habit.objects.order_by('-id')
     return render(request, 'habits/list_habits.html', {'habits': habits})
@@ -12,7 +20,7 @@ def list_habits(request):
 def show_habit(request, pk):
     habit = get_object_or_404(Habit, pk=pk)
     form = HabitForm()
-    return render(request, 'habits/show_habits.html', {'habit': habit, 'pk': pk, 'form': form})
+    return render(request, 'habits/show_habit.html', {'habit': habit, 'pk': pk, 'form': form})
 
 
 def add_habit(request):
@@ -45,4 +53,5 @@ def delete_habit(request, pk):
         habit.delete()
         messages.success(request, 'Habit deleted.')
         return redirect(to='list_habits')
-    return render(request, 'habits/delete_habits.html', {'habit': habit})
+        
+    return render(request, 'habits/delete_habit.html', {'habit': habit})

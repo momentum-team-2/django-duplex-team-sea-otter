@@ -3,7 +3,7 @@
 {% block content %}
 <h1>All Habits</h1>
 
-<p><a style="text-decoration:none" href="{% url 'add_book' %}">Add New Habit</a></p>
+<p><a style="text-decoration:none" href="{% url 'add_habit' %}">Add New Habit</a></p>
 
 <div class="flex flex-wrap">
   {% for habit in habits %}
@@ -18,6 +18,11 @@
       <div><b>Goal:</b> {{ habit.goal }}</div>
     </div>
     {% endif %}
+
+    <p>
+        <a style="text-decoration:none" href="{% url 'edit_habit' pk=habit.pk %}">Edit habit</a><br>
+        <a style="text-decoration:none" class="red" href="{% url 'delete_habit' pk=habit.pk %}">Delete habit</a>
+      </p>
   
   {% endfor %}
 </div>
