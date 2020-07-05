@@ -26,6 +26,7 @@ urlpatterns = [
     path('habits/<int:pk/edit/', core_views.edit_habit, name='edit_habit'),
     path('habits/<int:pk>/delete/', core_views.delete_habit, name='delete_book'),
     path('admin/', admin.site.urls),
+    path('accounts/', include('registration.backends.simple.urls')),
 ]
 
 if settings.DEBUG:
