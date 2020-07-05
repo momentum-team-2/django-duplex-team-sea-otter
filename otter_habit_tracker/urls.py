@@ -16,8 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.conf import settings
 from django.urls import include, path
+from core import views as habit_views
 
 urlpatterns = [
+    path('habits/', habit_views.list_habits, name='list_habits'),
+    path('habits/add/', habit_views.add_habit, name='add_habit'),
+    path('habits/<int:pk>/', habit_views.show_habit, name = 'show_habit'),
+    path('habits/<int:pk/edit/', habit_views.edit_habit, name='edit_habit'),
+    path('habits/<int:pk>/delete/', habit_views.delete_habit, name='delete_book'),
     path('admin/', admin.site.urls),
 ]
 

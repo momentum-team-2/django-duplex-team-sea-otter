@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>All Habits</h1>
+
+<p><a style="text-decoration:none" href="{% url 'add_book' %}">Add New Habit</a></p>
+
+<div class="flex flex-wrap">
+  {% for habit in habits %}
+  <div class="w-33 pa3">
+    <a href="{% url 'show_habit' pk=habit.pk %}">
+      <h2>{{ habit.name }}</h2>
+    </a>
+
+    {% if habit.goal %}
+    <div class="flex">
+      <div class="pr2"><i class="icofont-phone"></i></div>
+      <div><b>Goal:</b> {{ habit.goal }}</div>
+    </div>
+    {% endif %}
+  
+  {% endfor %}
+</div>
+{% endblock %}
