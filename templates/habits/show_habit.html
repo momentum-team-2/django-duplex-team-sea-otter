@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="w-33 pa3">
+  <h1>Habit Details</h1>
+  <h2><i>{{ habit.name }}</i></h2>
+
+  {% if habit.goal %}
+  <div class="flex">
+    <div class="pr2"><i class="icofont-phone"></i></div>
+    <div><b>Goal:</b> {{ habit.goal }}</div>
+  </div>
+  {% endif %}
+
+  <p>
+    <a style="text-decoration:none" href="{% url 'edit_habit' pk=habit.pk %}">Edit Habit</a><br>
+    <a style="text-decoration:none" class="red" href="{% url 'delete_habit' pk=habit.pk %}">Delete Habit</a>
+  </p>
+
+<a style="text-decoration:none" href={% url 'list_habits' %}>Back to all habits</a>
+</div>
+{% endblock %}
