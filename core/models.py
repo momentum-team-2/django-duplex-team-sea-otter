@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
+from users.models import User
 
 # Create your models here.
 class Habit(models.Model):
@@ -13,13 +15,13 @@ class Habit(models.Model):
         return f"{self.goal} {self.goal_quantity} {self.unit_of_measure} per day"
     
 
-class DailyRecord(models.Model):
+class Record(models.Model):
     habit = models.ForeignKey(to=Habit,
                               on_delete = models.CASCADE,
                               related_name='records')
     quantity = models.PositiveIntegerField(null=True, blank=True)
     unit_of_measure = models.CharField(max_length=255, null=True, blank=True)
-    recorded_on = models.DateField(null=True, blank=True)
+    recorded_on = models.DateTimeField(auto_now_add=True)
     
     class Meta:
         unique_together = ['habit', 'recorded_on']
