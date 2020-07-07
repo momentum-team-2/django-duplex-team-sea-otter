@@ -11,7 +11,22 @@
 
 </head>
 
-{% block content %}
-{% endblock content %}
+<body class="sans-serif">
+    <nav class="flex justify-end bb bg-black b--white-10">
+      <div class="flex-grow pa3 flex items-center">
+        {% if user.is_authenticated %}
+        <p class="mr4 serif i white">You are logged in as {{ user.username }}</p>
+        <a class="f6 link dib white dim mr3 mr4-ns" href={% url 'auth_logout' %}>Log Out</a>
+        {% else %}
+        <a class="f6 link dib white dim mr3 mr4-ns" href={% url 'auth_login' %}>Log In</a>
+        <a class="f6 dib white bg-animate hover-bg-white hover-black no-underline pv2 ph4 br-pill ba b--white-20" href={% url 'registration_register' %}>Register</a>
+        {% endif %}
+      </div>
+    </nav>
+    <div class="ma5">
+      {% block content %}
+      {% endblock content %}
+    </div>
+  </body>
 
 </html>
