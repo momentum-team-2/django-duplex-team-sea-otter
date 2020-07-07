@@ -15,15 +15,17 @@
     {% if habit.goal %}
     <div class="flex">
       <div class="pr2"><i class="icofont-phone"></i></div>
-      <div><b>Goal:</b> {{ habit.goal }}</div>
+      <div><a href="{% url 'show_habit' pk=habit.pk %}"><b>Goal:</b> {{ habit.goal }}</a>
+      </div>
     </div>
     {% endif %}
 
     <p>
         <a style="text-decoration:none" href="{% url 'edit_habit' pk=habit.pk %}">Edit habit</a><br>
-        <a style="text-decoration:none" class="red" href="{% url 'delete_habit' pk=habit.pk %}">Delete habit</a>
+        <a style="text-decoration:none" class="red" href="{% url 'delete_habit' pk=habit.pk %}">Delete habit</a><br>
+        <a style="text-decoration:none" class="red" href="{% url 'add_record' pk=habit.pk %}">Add Record</a>
       </p>
-  
+  </div>
   {% endfor %}
 </div>
 {% endblock %}
