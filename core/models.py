@@ -21,7 +21,7 @@ class Record(models.Model):
                               related_name='records')
     quantity = models.PositiveIntegerField(null=True, blank=True)
     unit_of_measure = models.CharField(max_length=255, null=True, blank=True)
-    recorded_on = models.DateTimeField(auto_now_add=True)
+    recorded_on = models.DateField()
     
     class Meta:
         unique_together = ['habit', 'recorded_on']
