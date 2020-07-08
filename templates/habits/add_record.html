@@ -17,6 +17,7 @@
 <h2 class="mt2 mb0 f3 fw4 ttu tracked">Update daily records for '{{ habit.goal }} {{habit.goal_quantity}} {{habit.unit_of_measure}} per day':</h2>
 <div class="mt2 mb0 f6 fw4 ttu tracked" >
 <form action="{% url 'add_record' year=date.year month=date.month day=date.day pk=habit.pk %}" method="POST">
+
     {% csrf_token %}
     {{form.as_p}}
 </div>
