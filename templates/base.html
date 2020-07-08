@@ -8,13 +8,14 @@
   <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <title>Otter Habit</title>
 
 </head>
 
-<body class="sans-serif" style="background-color:lightgray";>
+<body class="sans-serif" style="background-color: #A4D8F4";>
     <nav class="flex justify-end bb bg-black b--white-10">
-      <div class="flex-grow pa3 flex items-center">
+      <div class="flex-grow pa3 flex items-center mt2 mb0 f6 fw4 ttu tracked">
         {% if user.is_authenticated %}
         <p class="mr4 serif i white">You are logged in as {{ user.username }}</p>
         <a class="f6 link dib white dim mr3 mr4-ns" href={% url 'auth_logout' %}>Log Out</a>
