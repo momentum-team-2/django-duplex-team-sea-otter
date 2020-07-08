@@ -7,11 +7,12 @@
   {% block meta %}{% endblock meta %}
   <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <title>Otter Habit</title>
 
 </head>
 
-<body class="sans-serif">
+<body class="sans-serif" style="background-color:lightgray";>
     <nav class="flex justify-end bb bg-black b--white-10">
       <div class="flex-grow pa3 flex items-center">
         {% if user.is_authenticated %}
