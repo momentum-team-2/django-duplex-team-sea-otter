@@ -4,7 +4,7 @@
 {% block content %}
 <h2 class=''>Update records for your habits!</h2>
 <div class='' >
-<form action="{% url 'add_record' year=date.year month=date.month day=date.day pk=habit.pk %}" method="POST">
+<form action="{% url 'add_record' month=date.month day=date.day year=date.year   pk=habit.pk %}" method="POST">
     {% csrf_token %}
     {{form.as_p}}
 </div>

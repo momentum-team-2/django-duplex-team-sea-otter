@@ -39,7 +39,7 @@ def add_habit(request):
 
 
 @login_required
-def add_record(request, pk, year=None, month=None, day=None):
+def add_record(request, pk, month=None, day=None,  year=None,):
     habit = get_object_or_404(request.user.habits, pk=pk)
     if year is None:
         record_date = datetime.date.today()
@@ -48,7 +48,7 @@ def add_record(request, pk, year=None, month=None, day=None):
     
     next_day = record_date + datetime.timedelta(days=1)
     prev_day = record_date - datetime.timedelta(days=1)
-    record = habit.records.filter(recorded_on=record_date).first()
+    record = habit.records.filter(recorded_on).first()
 
     if record is None:
         record = Record(habit=habit, recorded_on=record_date)
