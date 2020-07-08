@@ -29,8 +29,7 @@
 
     {% if habit.goal %}
     <div class="flex">
-      <div class="pr2"><i class="icofont-phone"></i></div>
-      <div><a href="{% url 'show_habit' pk=habit.pk %}"><b>Goal:</b> {{ habit.goal }}</a>
+      <div><a style="text-decoration:none" href="{% url 'show_habit' pk=habit.pk %}"><b>Goal:</b> {{ habit.goal }} {{habit.goal_quantity}} {{habit.unit_of_measure}} per day.</a>
       </div>
     </div>
     {% endif %}
@@ -44,3 +43,4 @@
   {% endfor %}
 </div>
 {% endblock %}
+

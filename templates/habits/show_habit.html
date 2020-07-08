@@ -7,15 +7,20 @@
 
 {% if habit.goal %}
   <div class="flex">
-    <div class="pr2"><i class="icofont-phone"></i></div>
-  <div><b>Goal:</b> 
-  {{ habit.goal }}
-  </div>
+    <a style="text-decoration:none" href="{% url 'show_habit' pk=habit.pk %}"><b>Goal:</b> {{ habit.goal }} {{habit.goal_quantity}} {{habit.unit_of_measure}} per day.</a>
   </div>
 {% endif %}
 
+<h3 class="ml-4 mt-5">Your Progress:</h3>
+
+<ul>
+    {% for record in records %}
+     <a  href="{% url 'add_record' pk=habit.pk %}"><li>{{ record }}</li></a> 
+    {% endfor %}
+    <a style="text-decoration:none" class="btn btn-outline-light mt-3 ml-0" href="{% url 'add_record' pk=habit.pk%}">add another record</a>
+</ul>
+
   <p>
-    <a style="text-decoration:none" href="{% url 'edit_habit' pk=habit.pk %}">Edit Habit</a><br>
     <a style="text-decoration:none" class="red" href="{% url 'delete_habit' pk=habit.pk %}">Delete Habit</a>
   </p>
 
