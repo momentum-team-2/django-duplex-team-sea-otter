@@ -4,7 +4,7 @@
 <h1>Delete Habit</h1>
 
 <div>
-  <form action="{% url 'delete_habit' pk=book.pk %}" method="POST">
+  <form action="{% url 'delete_habit' pk=habit.pk %}" method="POST">
     {% csrf_token %}
     <p>Are you sure you want to delete {{ habit.name }}?</p>
     <div>
