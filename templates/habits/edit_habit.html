@@ -9,12 +9,12 @@
   <h2 class="mt2 mb0 f6 fw4 ttu tracked">"Drop by drop is the water pot filled. -Buddha"</h2>
   <nav class="bt bb tc mw7 center mt4">
     <a class="f6 f5-l link bg-animate black-80 hover-bg-lightest-blue dib pa3 ph4-l" href="{% url 'list_habits' %}">My Habits</a>
-    <a class="f6 f5-l link bg-animate black-80 hover-bg-light-green dib pa3 ph4-l" href="{% url 'add_habit' %}">Create Habit</a>
-    <a class="f6 f5-l link bg-animate black-80 hover-bg-light-blue dib pa3 ph4-l" href="{% url 'list_habits' %}">Home</a>
+    <a class="f6 f5-l link bg-animate black-80 hover-bg-lightest-blue dib pa3 ph4-l" href="{% url 'add_habit' %}">Create Habit</a>
+    <a class="f6 f5-l link bg-animate black-80 hover-bg-lightest-blue dib pa3 ph4-l" href="{% url 'list_habits' %}">Home</a>
    </nav>
 </header>
 
-<div class="mt2 mb0 f6 fw4 ttu tracked">
+<div class="mt2 mb0 f6 fw4 ttu tracked tc mw7 center mt4">
   <form action="{% url 'edit_habit' pk=habit.pk %}" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
