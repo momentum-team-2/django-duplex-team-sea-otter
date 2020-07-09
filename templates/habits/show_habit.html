@@ -9,42 +9,41 @@
   <h2 class="mt2 mb0 f6 fw4 ttu tracked">"Practice isn't the thing you do once you're good. It's the thing you do that makes you good. -Malcolm Gladwell"</h2>
   <nav class="bt bb tc mw7 center mt4">
     <a class="f6 f5-l link bg-animate black-80 hover-bg-lightest-blue dib pa3 ph4-l" href="{% url 'list_habits' %}">My Habits</a>
-    <a class="f6 f5-l link bg-animate black-80 hover-bg-light-green dib pa3 ph4-l" href="{% url 'add_habit' %}">Create Habit</a>
-    <a class="f6 f5-l link bg-animate black-80 hover-bg-light-blue dib pa3 ph4-l" href="{% url 'list_habits' %}">Home</a>
+    <a class="f6 f5-l link bg-animate black-80 hover-bg-lightest-blue dib pa3 ph4-l" href="{% url 'add_habit' %}">Create Habit</a>
+    <a class="f6 f5-l link bg-animate black-80 hover-bg-lightest-blue dib pa3 ph4-l" href="{% url 'list_habits' %}">Home</a>
    </nav>
 </header>
 
-<div class="w-33 pa3">
+<div class="mt2 mb0 f3 fw4 ttu tracked tc mw7 center mt4">
 
-  
+    {% if habit.goal %}
+    <a style="text-decoration:none" class="black-90 mt2 mb0 f3 fw4 ttu tracked" href="{% url 'show_habit' pk=habit.pk %}"><b>Goal:</b> {{ habit.goal }} {{habit.goal_quantity}} {{habit.unit_of_measure}} per day</a>
+    {% endif %}
 
-{% if habit.goal %}
-<a style="text-decoration:none" class="black-90 mt2 mb0 f3 fw4 ttu tracked" href="{% url 'show_habit' pk=habit.pk %}"><b>Goal:</b> {{ habit.goal }} {{habit.goal_quantity}} {{habit.unit_of_measure}} per day</a>
-{% endif %}
+    <h3 class="mt-5">Your Progress:</h3>
 
-<h3 class="mt-5 mt2 mb0 f3 fw4 ttu tracked">Your Progress:</h3>
-
-<ul>
-    {% for record in records %}
-     <a  class="black-90 mt2 mb0 f5 fw4 ttu tracked" href="{% url 'add_record' pk=habit.pk %}"><li>{{ record }}</li></a> 
-    {% endfor %}
-    <a style="text-decoration:none" class="btn btn-outline-light mt-2 mt2 mb0 f6 fw4 ttu tracked" href="{% url 'add_record' pk=habit.pk%}">add another record</a>
-</ul>
-
-  <p>
-    <i class="fa fa-trash"></i>
-    <a style="text-decoration:none" class="black-90" href="{% url 'delete_habit' pk=habit.pk %}">delete habit</a>
-  </p>
-<p>
-    <i class="fa fa-arrow-left"></i>
-    <a class="black-90" style="text-decoration:none" href="{% url 'list_habits' %}">back to all habits</a>
-</p>
-
+    <ul style='list-style-type: none'>
+        {% for record in records %}
+        <a  class="black-90 mt2 mb0 f5 fw4 ttu tracked" href="{% url 'add_record' pk=habit.pk %}"><li>{{ record }}</li></a> 
+        {% endfor %}
+        <a style="text-decoration:none" class="btn btn-outline-light mt-2 mt2 mb0 f6 fw4 ttu tracked" href="{% url 'add_record' pk=habit.pk%}">add another record</a>
+    </ul>
+</div>
+<div class="tc" > 
+    <p>
+        <i class="fa fa-trash"></i>
+        <a style="text-decoration:none" class="black-90" href="{% url 'delete_habit' pk=habit.pk %}">delete habit</a>
+    </p>
+    <p>
+        <i class="fa fa-arrow-left"></i>
+        <a class="black-90" style="text-decoration:none" href="{% url 'list_habits' %}">back to all habits</a>
+    </p>
 </div>
 
+
 <div>
-  <div>
-    <canvas id="myChart" width= "200" height= "200"></canvas>
+  <div style='height: 800px; width: 800px;' class="center tc">
+    <canvas id="myChart"></canvas>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <script>
