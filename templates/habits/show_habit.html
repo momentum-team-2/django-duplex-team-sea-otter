@@ -59,7 +59,7 @@
             labels: [{% for item in records %}'{{item.recorded_on}}', {% endfor %}],
             datasets: [{
                 label: 'Daily Record Dataset',
-                backgroundColor: 'rgb(255, 99, 132)',
+                backgroundColor: 'transparent',
                 borderColor: 'rgb(255, 99, 132)',
                 data: [{% for item in records %}'{{item.quantity}}', {% endfor %}],
                 
