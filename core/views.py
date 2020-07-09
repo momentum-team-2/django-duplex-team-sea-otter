@@ -41,7 +41,7 @@ def add_habit(request):
 @login_required
 def add_record(request, pk, month=None, day=None,  year=None,):
     habit = get_object_or_404(request.user.habits, pk=pk)
-    records = habit.records.order_by('-recorded_on')
+    
     if year is None:
         record_date = datetime.date.today()
     else:
